@@ -22,7 +22,7 @@ const serverUrl = ((base) => {
     base.host = config.host;
   }
   base.port =
-    ecosystemConfig[config.production ? 'env_production' : 'env'].PORT;
+    process.env.PORT || ecosystemConfig[config.production ? 'env_production' : 'env'].PORT;
   base.pathname =
     (config.pathname || '/').replace(/\/+$|[^\w\/\.-]+/g, '') + '/';
   return Object.freeze(base);
